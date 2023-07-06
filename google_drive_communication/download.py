@@ -53,7 +53,6 @@ class Download:
             :save_folder: 儲存檔案的資料夾路徑
 
         '''
-
         for file in files:
             basename, fileId = file['name'], file['id']
             save_file = os.path.join(save_folder, basename)
