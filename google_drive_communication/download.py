@@ -58,3 +58,24 @@ class Download:
             basename, fileId = file['name'], file['id']
             save_file = os.path.join(save_folder, basename)
             self.download_file(fileId, save_file)
+
+    def listdir_cloud_folder(self, cloud_file_id:str) -> list:
+        '''
+        功能:
+            列出雲端資料夾內所有的檔案名稱
+        輸入:
+            :cloud_file_id: 雲端資料夾
+        輸出:
+            :files: 雲端檔案 id 
+            
+                files = [
+                    {'id':'XXXX', 'name':'filename.extension'},
+                    {'id':'XXXX', 'name':'filename.extension'},
+                    ....
+                ]
+        '''
+
+        query = f"'{cloud_folder_id}' in parents"
+        files = communication_function.query_metadata(service=self.service, fields='id, name', query=query)
+
+        return files
