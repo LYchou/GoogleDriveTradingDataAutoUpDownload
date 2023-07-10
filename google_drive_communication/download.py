@@ -33,9 +33,9 @@ class Download:
         '''
 
         print(f'-- 下載 save_file={save_file} , cloud_file_id={cloud_file_id}')
-        if os.path.exists(save_file):
-            print('-- (成功)')
+        if not os.path.isfile(save_file):
             communication_function.download_metadata(self.service, fileId=cloud_file_id, save_file=save_file)
+            print('-- (成功)')
         else:
             print('-- (失敗) 檔案已經存在')
 
