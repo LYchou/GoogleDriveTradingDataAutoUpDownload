@@ -22,7 +22,7 @@ class Download:
             creds_and_tokem_path=self.creds_and_tokem_path
         )
 
-    def download_file(cloud_file_id:str, save_file:str) -> None:
+    def download_file(self, cloud_file_id:str, save_file:str) -> None:
         '''
         功能:
             儲存單一檔案
@@ -35,11 +35,11 @@ class Download:
         print(f'-- 下載 save_file={save_file} , cloud_file_id={cloud_file_id}')
         if os.path.exists(save_file):
             print('-- (成功)')
-            communication_function.download_metadata(self.service, fileId=file_id, save_file=save_file)
+            communication_function.download_metadata(self.service, fileId=cloud_file_id, save_file=save_file)
         else:
             print('-- (失敗) 檔案已經存在')
 
-    def download_files(files:list, save_folder:str) -> None:
+    def download_files(self, files:list, save_folder:str) -> None:
         '''
         功能:
             下載多個檔案
@@ -58,12 +58,12 @@ class Download:
             save_file = os.path.join(save_folder, basename)
             self.download_file(fileId, save_file)
 
-    def listdir_cloud_folder(self, cloud_file_id:str) -> list:
+    def listdir_cloud_folder(self, cloud_folder_id:str) -> list:
         '''
         功能:
             列出雲端資料夾內所有的檔案名稱
         輸入:
-            :cloud_file_id: 雲端資料夾
+            :cloud_folder_id: 雲端資料夾
         輸出:
             :files: 雲端檔案 id 
             
