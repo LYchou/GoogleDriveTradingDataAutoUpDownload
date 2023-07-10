@@ -155,46 +155,6 @@ class Upload:
         return files
 
 
-    # def upload_files_in_folder(self, local_folder_path, cloud_folder_id):
-    #     '''
-    #     上傳資料夾中所有雲端沒有的檔案
-    #     '''
-
-    #     if self.mode!=Mode.update:
-    #         print('-- update_all_files 失敗，需要把 self.mode 設定為 Mode.update')
-    #         return
-
-    #     else:
-    #         # 搜尋端檔案
-    #         print(f'-- 開始搜尋 {local_folder_path} 對應雲端檔案, id={cloud_folder_id}')
-    #         query = f"'{cloud_folder_id}' in parents"
-    #         cloud_files = communication_function.query_metadata(service=self.service, fields='id, name', query=query)
-    #         cloud_file_names = [Dict['name'] for Dict in cloud_files]
-    #         print(f'-- 完成，雲端共有 {len(cloud_file_names)} 個檔案')
-    #         # 尋找本地端的檔案
-    #         print(f'-- 開始搜尋 {local_folder_path} 本地檔案')
-    #         local_file_names = sorted(os.listdir(local_folder_path))
-    #         print(f'-- 完成，本地共有 {len(local_file_names)} 個檔案')
-    #         # 對比出雲端沒有本地有的檔案
-    #         upload_file_names = list(set(local_file_names)-set(cloud_file_names))
-    #         # 確保檔案都是 csv
-    #         upload_file_names = [file_name for file_name in upload_file_names if 'csv' in file_name] 
-    #         max_date = max(upload_file_names, key=lambda file:file.split('.')[0]) if len(upload_file_names)>0 else None
-    #         min_date = min(upload_file_names, key=lambda file:file.split('.')[0]) if len(upload_file_names)>0 else None
-
-    #         print(f'-- 經過對比，需要上傳的檔案有 {len(upload_file_names)} 個檔案 ({min_date}~{max_date})')
-    #         print('-- 開始上傳')
-    #         for fileName in sorted(upload_file_names):
-    #             file = os.path.join(local_folder_path,fileName)
-    #             # 上傳檔案
-    #             print(f'-- 上傳 {local_folder_path} - {fileName}')
-    #             upload_file_respond_dict = communication_function.upload_file(
-    #                 service=self.service, fileName=fileName, parent_id=cloud_folder_id, loacl_file=file
-    #             )
-    #             print('-- 成功')
-
-
-
 class Mode(enum.Enum):
     '''
     權限:小->大
