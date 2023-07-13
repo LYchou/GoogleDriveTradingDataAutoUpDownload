@@ -131,7 +131,7 @@ class Upload:
                 print('-- 成功')
                 upload_files.append(upload_file_respond_dict)
 
-            return upload_file_respond_dict
+            return upload_files
 
     def listdir_cloud_folder(self, cloud_folder_id:str) -> list:
         '''
